@@ -237,45 +237,45 @@ export default function Generator() {
       </div>
 
       {selected && (
-        <div className="rise -mt-px border border-line-2 bg-ink-2">
-          <div className="grid sm:grid-cols-[190px_1fr]">
-            <div className="relative hidden min-h-[90px] overflow-hidden border-r border-line sm:block">
-              {!imageFailed ? (
-                <img
-                  key={selected.id}
-                  src={steamHeader(selected.id)}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover opacity-75 grayscale"
-                  onError={() => setImageFailed(true)}
-                />
-              ) : (
-                <div className="absolute inset-0 grid-field" />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-ink-2" />
-            </div>
-            <div className="flex items-center justify-between gap-5 px-4 py-4 sm:px-5">
-              <div className="min-w-0">
-                <div className="label">selected game</div>
-                <div className="mt-1 truncate text-lg font-medium tracking-tight">{selected.name}</div>
-                <div className="mt-1 font-mono text-[11px] text-signal">APPID {selected.id}</div>
-              </div>
-              {phase === "idle" && (
-                <button
-                  onClick={() => {
-                    setSelected(null);
-                    setQuery("");
-                    setOutput("");
-                  }}
-                  className="font-mono text-[10px] uppercase tracking-[0.14em] text-fog hover:text-chalk"
-                >
-                  clear ×
-                </button>
-              )}
-            </div>
+        <div className="rise mt-5 overflow-hidden rounded-lg border border-[#302d38] bg-[#1c1b20]">
+          <div className="relative aspect-[2.56/1] overflow-hidden bg-[#242129]">
+            {!imageFailed ? (
+              <img
+                key={selected.id}
+                src={steamHeader(selected.id)}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+                onError={() => setImageFailed(true)}
+              />
+            ) : <div className="absolute inset-0 grid-field" />}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1c1b20] via-transparent to-transparent" />
           </div>
-
+          <div className="flex items-center justify-between gap-5 px-4 py-4">
+            <div className="min-w-0">
+              <div className="truncate text-base font-semibold tracking-tight text-[#e8e4ed]">{selected.name}</div>
+              <div className="mt-1 text-xs text-[#777281]">{selected.id} <span className="px-1 text-[#7650ee]">•</span> <span className="font-semibold text-[#9274e8]">GAME</span></div>
+              <div className="mt-1 text-xs text-[#66616e]">Public Steam game entry</div>
+            </div>
+            {phase === "idle" && (
+              <button
+                onClick={() => {
+                  setSelected(null);
+                  setQuery("");
+                  setOutput("");
+                }}
+                className="text-xs text-[#918b9b] hover:text-white"
+              >
+                Clear
+              </button>
+            )}
+          </div>
+          <div className="border-t border-[#302d38] px-4 py-3">
+            {phase === "idle" && <div className="flex items-center justify-between gap-4"><span className="flex items-center gap-2 text-sm font-medium text-[#d5c9eb]"><span className="grid size-6 place-items-center rounded-md bg-[#7256d9] text-xs text-white">V</span> VXLuaTools</span><span className="rounded border border-[#1e704c] bg-[#123322] px-2 py-1 text-[10px] font-semibold text-[#43df91]">AVAILABLE</span><button onClick={generate} className="rounded-md bg-[#7844e7] px-3 py-2 text-xs font-semibold text-white hover:bg-[#8958ef]">Generate Lua</button></div>}
+          </div>
+          {phase !== "idle" && (
+            <div>
           {phase === "resolving" && (
-            <div className="border-t border-line px-4 py-3 sm:px-5">
+            <div className="px-4 py-3 sm:px-5">
               {RESOLVE_STEPS.map((label, index) => (
                 <div key={label} className="flex items-center gap-3 py-1 font-mono text-[11px]">
                   <span className={index < step ? "text-signal" : "text-fog/25"}>{index < step ? "✓" : "○"}</span>
@@ -288,7 +288,7 @@ export default function Generator() {
           )}
 
           {phase === "ready" && (
-            <div className="border-t border-line">
+            <div className="border-t border-[#302d38]">
               <div className="flex items-center justify-between border-b border-line bg-ink-3 px-4 py-2 sm:px-5">
                 <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-fog">{selected.id}.lua</span>
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-signal">
@@ -316,6 +316,8 @@ export default function Generator() {
                   </button>
                 </div>
               </div>
+            </div>
+          )}
             </div>
           )}
         </div>

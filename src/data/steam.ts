@@ -151,7 +151,7 @@ export function findGames(games: SteamGame[], input: string, limit = 12) {
 
 export function buildLua(game: SteamGame) {
   const lines = [
-    "-- MANIFOLD — Steam manifest starter",
+    "-- VXLuaTools — Steam manifest starter",
     `-- App: ${game.name}`,
     `-- AppID: ${game.id}`,
     `-- Generated: ${new Date().toISOString()}`,
