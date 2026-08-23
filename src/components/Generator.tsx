@@ -130,16 +130,16 @@ export default function Generator() {
   return (
     <div ref={rootRef} className="relative w-full">
       <div className="relative">
-        <div className="border border-line-2 bg-ink-2">
-        <div className="relative flex items-center justify-between overflow-hidden border-b border-line px-4 py-2.5">
+        <div className="overflow-hidden rounded-2xl border border-white/[.11] bg-[#1d142b] shadow-[0_24px_70px_rgba(0,0,0,.25)]">
+        <div className="relative flex items-center justify-between overflow-hidden border-b border-white/[.08] px-4 py-3">
           {indexState === "loading" && progress !== null && (
             <span
-              className="absolute bottom-0 left-0 h-px bg-signal transition-[width] duration-300"
+               className="absolute bottom-0 left-0 h-px bg-[#ab8dff] transition-[width] duration-300"
               style={{ width: `${Math.max(2, progress * 100)}%` }}
             />
           )}
-          <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-fog">
-            <span className={`h-1.5 w-1.5 ${indexState === "fallback" ? "bg-amber" : "bg-signal"}`} />
+             <span className="flex items-center gap-2 text-[11px] font-medium text-[#baaece]">
+             <span className={`h-1.5 w-1.5 rounded-full ${indexState === "fallback" ? "bg-amber" : "bg-[#abf08b]"}`} />
             {statusText}
           </span>
           <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-fog/50 sm:block">
@@ -147,9 +147,9 @@ export default function Generator() {
           </span>
         </div>
 
-          <div className="flex flex-col sm:flex-row">
-          <label className="flex min-w-0 flex-1 items-center gap-3 px-4 py-5 sm:px-5">
-            <span className="font-mono text-sm text-signal">&gt;</span>
+           <div className="flex flex-col sm:flex-row">
+           <label className="flex min-w-0 flex-1 items-center gap-3 px-4 py-5 sm:px-5">
+             <span className="text-lg text-[#b99fff]">⌕</span>
             <input
               autoFocus
               value={query}
@@ -178,14 +178,14 @@ export default function Generator() {
               }}
               placeholder="Enter AppID or search every Steam game"
               spellCheck={false}
-              className="w-full bg-transparent font-mono text-[14px] text-chalk placeholder:text-fog/45 sm:text-[15px]"
+               className="w-full bg-transparent text-[15px] text-white placeholder:text-[#877a9a] sm:text-base"
             />
-            {!query && <span className="caret -ml-2 h-[17px] w-[7px] bg-signal" />}
+             {!query && <span className="caret -ml-2 h-[17px] w-[7px] bg-[#ad91ff]" />}
           </label>
           <button
             onClick={generate}
             disabled={!candidate || phase === "resolving"}
-            className="group flex items-center justify-between gap-8 border-t border-line-2 px-5 py-4 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors enabled:bg-signal enabled:text-ink enabled:hover:bg-chalk disabled:cursor-not-allowed disabled:text-fog/30 sm:border-l sm:border-t-0"
+             className="group flex items-center justify-between gap-8 border-t border-white/[.08] px-5 py-4 text-xs font-semibold transition-colors enabled:bg-[#a98bff] enabled:text-[#211532] enabled:hover:bg-[#c0abff] disabled:cursor-not-allowed disabled:text-[#756887] sm:border-l sm:border-t-0"
           >
             {phase === "resolving" ? "resolving" : "generate lua"}
             <span className={phase === "resolving" ? "spin-half" : "transition-transform group-hover:translate-x-1"}>
@@ -196,7 +196,7 @@ export default function Generator() {
         </div>
 
         {open && query.trim() && !selected && phase === "idle" && (
-          <div className="rise absolute left-0 right-0 top-full z-30 -mt-px max-h-[374px] overflow-y-auto border border-line-2 bg-ink-2 shadow-[0_30px_80px_rgba(0,0,0,0.65)]">
+           <div className="rise absolute left-0 right-0 top-full z-30 -mt-px max-h-[374px] overflow-y-auto rounded-b-2xl border border-white/[.11] bg-[#211730] shadow-[0_30px_80px_rgba(0,0,0,0.65)]">
           {numericGame && (
             <button
               onClick={() => choose(numericGame)}

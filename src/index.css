@@ -5,18 +5,18 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-pixel: "VT323", ui-monospace, monospace;
 
-  --color-ink: #060607;
-  --color-ink-2: #0a0a0c;
-  --color-ink-3: #0e0f11;
-  --color-line: #1b1d1f;
-  --color-line-2: #26282b;
-  --color-line-3: #35383c;
-  --color-fog: #787d82;
-  --color-fog-2: #9aa0a4;
-  --color-chalk: #f2f3f1;
-  --color-signal: #b8ff2e;
-  --color-amber: #ffb224;
-  --color-ember: #ff4d2e;
+  --color-ink: #120d1b;
+  --color-ink-2: #1d142b;
+  --color-ink-3: #251a35;
+  --color-line: #382b4a;
+  --color-line-2: #4a3a5e;
+  --color-line-3: #665577;
+  --color-fog: #a99cb9;
+  --color-fog-2: #cdbfda;
+  --color-chalk: #f5efff;
+  --color-signal: #ad91ff;
+  --color-amber: #ffbd74;
+  --color-ember: #ff7a92;
 }
 
 html {
@@ -30,6 +30,13 @@ body {
   font-family: var(--font-sans);
   letter-spacing: -0.01em;
   overflow-x: hidden;
+}
+
+.aurora {
+  background:
+    radial-gradient(ellipse 58% 38% at 50% -8%, rgba(143, 100, 255, 0.26), transparent 72%),
+    radial-gradient(ellipse 38% 30% at 90% 44%, rgba(255, 130, 178, 0.09), transparent 75%),
+    radial-gradient(ellipse 35% 25% at 5% 70%, rgba(111, 86, 202, 0.13), transparent 75%);
 }
 
 ::selection {
